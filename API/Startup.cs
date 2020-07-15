@@ -29,11 +29,11 @@ namespace API
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<StoreContext>(x =>
-                x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+                x.UseMySql(_config.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<AppIdentityDbContext>(x => 
+            services.AddDbContext<AppIdentityDbContext>(x =>
             {
-                x.UseSqlite(_config.GetConnectionString("IdentityConnection"));
+                x.UseMySql(_config.GetConnectionString("IdentityConnection"));
             });
 
             services.AddSingleton<IConnectionMultiplexer>(c =>
